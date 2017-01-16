@@ -29,8 +29,8 @@ print iris.data[0]  # first flower
 print iris.target[0]  # contains the labels
 
 # print entire dataset
-# for i in xrange(len(iris.target)):
-#     print "Example %d: label %s, features %s" % (i, iris.target[i], iris.data[i])
+for i in xrange(len(iris.target)):
+    print "Example %d: label %s, features %s" % (i, iris.target[i], iris.data[i])
 
 # Testing Data
 # Examples used to test the classifier's accuracy
@@ -68,7 +68,7 @@ print clf.predict(test_data)
 # Visualize
 # from scikit decision tree tutorial: http://scikit-learn.org/stable/modules/tree.html
 from sklearn.externals.six import StringIO
-import pydot
+import pydotplus
 
 dot_data = StringIO()
 tree.export_graphviz(clf, out_file=dot_data,
@@ -76,5 +76,5 @@ tree.export_graphviz(clf, out_file=dot_data,
                      class_names=iris.target_names,
                      filled=True, rounded=True,
                      impurity=False)
-graph = pydot.graph_from_dot_data(dot_data.getvalue())
+graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
 graph.write_pdf("iris.pdf")
